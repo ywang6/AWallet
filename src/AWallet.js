@@ -6,7 +6,8 @@ import { sliderWidth, itemWidth } from './SliderEntry.style';
 import SliderEntry from './SliderEntry';
 import styles, { colors } from './main.style';
 import { ENTRIES } from './MockedEntries';
-import { Header} from 'react-native-elements';
+import { Header, Icon} from 'react-native-elements';
+import ListTransactions from './ListTransactions';
 
 const IS_ANDROID = Platform.OS === 'android';
 const SLIDER_1_FIRST_ITEM = 1;
@@ -42,7 +43,7 @@ export default class AWallet extends Component {
                 </View> */}
 
                 <Header
-                    centerComponent={{ text: 'AWallets', style: { color: 'rgba(22, 43, 85, 1)' } }}
+                    centerComponent={{ text: 'AWallets', style: { color: 'rgba(22, 43, 85, 1)'} }}
                     rightComponent={{ icon: 'menu', color: 'rgba(22, 43, 85, 1)' }}
                     backgroundColor='white'
                 />
@@ -52,8 +53,12 @@ export default class AWallet extends Component {
                         <Text>Wallets</Text>
                     </View>
 
-                    <View style={{alignItems: "center"}}>
-                        <Text style={{ fontSize: 30}}>+</Text>
+                    <View style={{alignItems: "center", justifyContent: "center"}}>
+                        <Icon
+                            name='add'
+                            color='black'
+                            onPress={() => console.log('hello')} 
+                        />
                     </View>
                 </View>
                 
@@ -73,7 +78,8 @@ export default class AWallet extends Component {
                     autoplay={false}
                     onSnapToItem={(index) => this.setState({ slider1ActiveSlide: index }) }
                 />
-                
+
+                <ListTransactions></ListTransactions>
             </View>
         );
     }
