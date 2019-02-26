@@ -12,6 +12,12 @@ export default StyleSheet.create({
         flex: 1,
         backgroundColor: colors.black
     },
+    homePage: {
+        flex: 1,
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor: '#F5FCFF',
+    },
     container: {
         flex: 1,
         backgroundColor: colors.background1

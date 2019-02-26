@@ -2,8 +2,20 @@ import React, { Component } from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { ParallaxImage } from 'react-native-snap-carousel';
 import styles from './SliderEntry.style';
+import NavigationService from '../NavigationService'
 
 export default class SliderEntry extends Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount() {
+        this.setState({
+            isLoading:false,
+        });
+        this.props.navigation;
+    }
 
     get image () {
         const { data: { illustration }, parallax, parallaxProps} = this.props;
@@ -41,9 +53,10 @@ export default class SliderEntry extends Component {
 
         return (
             <TouchableOpacity
+              navigation={this.props.navigation}
               activeOpacity={1}
               style={styles.slideInnerContainer}
-              onPress={() => { alert(`You've clicked '${title}'`); }}
+              onPress={() => NavigationService.navigate('WalletDetail') }
               >
                 <View style={styles.shadow} />
                 <View style={[styles.imageContainer, styles.imageContainerEven]}>
