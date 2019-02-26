@@ -1,22 +1,19 @@
 import React, {Component} from 'react';
 import { StyleSheet, View} from 'react-native';
-import AWallet from './src/AWallet.js';
+import MainBottomTabs from './src/MainBottomTabs';
+import NavigationService from './NavigationService';
 
 export default class App extends Component {
+  navigator = null;
+  
   render() {
     return (
-      <View style={styles.container}>
-        <AWallet />
-      </View>
+      <MainBottomTabs
+        ref={nav=>{
+          this.navigator = nav;
+          NavigationService.setTopLevelNavigator(nav);
+        }}
+      />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  }
-});
